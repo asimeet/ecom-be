@@ -1,0 +1,41 @@
+{
+  "name": "ecom-be",
+  "version": "1.0.0",
+  "description": "A demo e-commerce backend runing with express microservices",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start-pdp-dev": "NODE_ENV=dev node src/services/pdp.service.js",
+    "start-product-dev": "NODE_ENV=dev node src/services/product.service.js",
+    "start-metadata-dev": "NODE_ENV=dev node src/services/metadata.service.js",
+    "start-ugc-dev": "NODE_ENV=dev node src/services/ugc.service.js",
+    "start-pdp-prod": "NODE_ENV=production node src/services/pdp.service.js",
+    "start-product-prod": "NODE_ENV=production node src/services/product.service.js",
+    "start-metadata-prod": "NODE_ENV=production node src/services/metadata.service.js",
+    "start-ugc-prod": "NODE_ENV=production node src/services/ugc.service.js",
+    "start-all-dev": "NODE_ENV=dev node server.js",
+    "start-all-prod": "NODE_ENV=production node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asimeet/ecom-app/ecom-be"
+  },
+  "keywords": [
+    "ecommerce",
+    "NODE_ENV=dev node.js",
+    "app",
+    "microservice",
+    "app",
+    "express",
+    "app"
+  ],
+  "author": "Asimeet",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
+  }
+}
