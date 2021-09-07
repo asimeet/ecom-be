@@ -9,6 +9,69 @@ router.get('/', (req, res) => {
 
 /**
  * @swagger
+ * definitions:
+ *  info:
+ *      type: object
+ *      properties:
+ *          title: 
+ *              type: string
+ *          header:
+ *              type: string
+ *          description: 
+ *              type: string
+ *          recyleInfo: 
+ *              type: string
+ *  metadata:
+ *      type: object
+ *      properties:
+ *          title:
+ *              type: string
+ *          ogTitle:
+ *              type: string
+ *          description:
+ *              type: string
+ *          ogDescription:
+ *              type: string
+ *          ogUrl:
+ *              type: string
+ *          ogImage:
+ *              type: string
+ *          keywords:
+ *              type: string
+ *  items:
+ *      type: array
+ *      items: 
+ *          type: object
+ *          properties:
+ *              itemId: 
+ *                  type: string
+ *              color: 
+ *                  type: string
+ *              size:
+ *                  type: string
+ *              stock:
+ *                  type: integer
+ *              price: 
+ *                  type: integer
+ *              currency: 
+ *                  type: integer
+ *      description: Describes price and stock for item of unique color+size combination of a product
+ *  ratings:
+ *      type: array
+ *      items: 
+ *          type: object
+ *          properties:
+ *              userEmail:
+ *                  type: string
+ *              stars:
+ *                  type: integer
+ *              comment:
+ *                  type: string
+ *      description: Contains ratings with attributes stars, userEmail and comment
+ */
+
+/**
+ * @swagger
  * paths:
  *  /get-product-description/{id}:
  *      get:
@@ -35,19 +98,9 @@ router.get('/', (req, res) => {
  *                      type: object
  *                      properties:
  *                          info:
- *                              type: object
- *                              properties:
- *                                  title: 
- *                                      type: string
- *                                  header:
- *                                      type: string
- *                                  description: 
- *                                      type: string
- *                                  recyleInfo: 
- *                                      type: string  
- *                          metadata:
- *                               type: object
- *    
+ *                              $ref: '#/definitions/info'
+ *                          metadata: 
+ *                              $ref: '#/definitions/metadata'  
  */
 router.get('/get-product-description/:id', async (req, res, next) => {
     try {
@@ -91,28 +144,13 @@ router.get('/get-product-description/:id', async (req, res, next) => {
  *                  type: object
  *                  properties:
  *                      ratings:
- *                          type: array
- *                          items: 
- *                              type: object
- *                          description: Contains ratings with attributes star, userEmail and comment
- *                      items:
- *                          type: array
- *                          items: 
- *                              type: object
- *                          description: Describes price and stock for item of unique color+size combination of a product
+ *                          $ref: '#/definitions/ratings'
  *                      info:
- *                          type: object
- *                          properties:
- *                              title: 
- *                                  type: string
- *                              header:
- *                                  type: string
- *                              description: 
- *                                  type: string
- *                              recyleInfo: 
- *                                  type: string 
+ *                          $ref: '#/definitions/info'
  *                      metadata:
- *                          type: object
+ *                          $ref: '#/definitions/metadata'
+ *                      items:
+ *                          $ref: '#/definitions/items'
  */
 router.get('/get-product-specs/:id', async (req, res, next) => {
     try {

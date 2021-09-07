@@ -14,31 +14,32 @@ before_script:
 dummy-test:
   stage: test
   script:
-    - echo "dummy-test went well"
+    - echo "perform different test procedures ONLY THE PIPELINE SERVER(gitlab in this case)"
+    - echo "it may run lint fixes, node module installs and unit test case run "
   only:
-    - develop
+    - main
 
-pull-develop-on-ec2:
+pull-main-on-ec2:
   stage: build
   script:
-    - ssh -o StrictHostKeyChecking=no ec2-user@ec2-13-233-103-26.ap-south-1.compute.amazonaws.com "cd demo-express && git checkout develop && git pull"
-    - echo "pulling develop went well"
+    - ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-195-234-96.eu-central-1.compute.amazonaws.com "cd ecom-be && git checkout main && git pull"
+    - echo "pulling from 'main' went well"
   only:
-    - develop
+    - main
 
 build-node-modules:
   stage: build
   script:
-    - ssh -o StrictHostKeyChecking=no ec2-user@ec2-13-233-103-26.ap-south-1.compute.amazonaws.com "cd demo-express && npm i"
+    - ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-195-234-96.eu-central-1.compute.amazonaws.com "cd ecom-be && npm i"
     - echo "npm i went well"
   only:
-    - develop
+    - main
 
 pm2-restart:
   type: command
   stage: deploy
   script:
-    - ssh -o StrictHostKeyChecking=no ec2-user@ec2-13-233-103-26.ap-south-1.compute.amazonaws.com "cd demo-express && pm2 restart pm2.config.js"
+    - ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-195-234-96.eu-central-1.compute.amazonaws.com "cd ecom-be && pm2 restart pm2.config.js"
     - echo "pm2-restart went well"
   only:
-    - develop
+    - main

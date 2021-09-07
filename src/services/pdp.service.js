@@ -4,7 +4,24 @@ const sharedMiddlewares = require('../lib/shared-middlewares');
 const app = express();
 const router = require('../routers/pdp.router');
 
-/** swagger setup */
+/**
+ * Enabling CORS for handling cross-origin request
+ * -----------------------------------------------
+ */
+ app.use(function (req, res, next) {
+  const origin = process.env.NODE_ENV === 'development' ? '*' : process.env.PDP_FRONTEND_URL;
+  res.header("Access-Control-Allow-Origin", origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+/**
+ * -------------end-of-cors-enablement------------
+ */
+
+/**
+ *  Swagger Initialization for API Documention
+ * ----------------------------------------------------
+ */
 const swaggerJsonDoc = require('swagger-jsdoc')
 const swaggerUI = require('swagger-ui-express')
 
@@ -25,16 +42,15 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsonDoc(swaggerOptions)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
+/**
+ *  ----------end-of-swagger-init---------------------
+ */
+
 /** use middle wares */
 app.use(express.json());
 app.use(sharedMiddlewares.enableExternalApiKey);
 app.use(sharedMiddlewares.makeSecured);
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 
 /** Mange routes */
 
