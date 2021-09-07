@@ -5,7 +5,7 @@ const callMicroservice = async(microserviceName, requestMethod, path, reqBody = 
     if(requestMethod == 'POST' && !reqBody){
         throw Error('POST request needs a body');
     }
-    const isDev = process.env.NODE_ENV == 'dev';
+    const isDev = process.env.NODE_ENV == 'development';
     const microserviceBaseUrls = {
         'PRODUCT': isDev? `http://localhost:${config.PRODUCT_PORT}` : config.PRODUCT_URL,
         'UGC': isDev? `http://localhost:${config.UGC_PORT}` : config.UGC_URL,
