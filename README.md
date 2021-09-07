@@ -1,0 +1,1 @@
+INTERNAL_API_KEY=ec2-int-001 EXTERNAL_API_KEY=ext-ecom-002  pm2 start pm2.config.js --env=production --update-env
