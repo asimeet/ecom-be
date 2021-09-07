@@ -38,7 +38,7 @@ app.use(function (req, res, next) {
 
 /** Mange routes */
 
-app.use(router);
+app.use('/api',router);
 
 app.listen(config.PDP_PORT, () => {
     console.log(`Product Description Page service is running at port: ${config.PDP_PORT}`);
