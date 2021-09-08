@@ -15,7 +15,7 @@ module.exports = {
     items: [
       {
         color: "core-black",
-        stock: 0,
+        stock: 15,
         size: "35 1/2",
         price: 70,
         currency: "eur",
@@ -24,7 +24,7 @@ module.exports = {
       },
       {
         color: "core-black",
-        stock: 15,
+        stock: 0,
         size: "36",
         price: 140,
         currency: "eur",
