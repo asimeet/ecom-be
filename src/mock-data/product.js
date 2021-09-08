@@ -25,15 +25,6 @@ module.exports = {
     },
     {
       color: "core-black",
-      stock: 0,
-      size: 4,
-      price: 140,
-      currency: "eur",
-      productId: "12345",
-      itemId: "12345_1",
-    },
-    {
-      color: "core-black",
       stock: 15,
       size: 8,
       price: 120,
@@ -202,15 +193,6 @@ module.exports = {
       currency: "eur",
       productId: "12345",
       itemId: "12345_28",
-    },
-    {
-      color: "cloud-white",
-      stock: 15,
-      size: 4,
-      price: 140,
-      currency: "eur",
-      productId: "12345",
-      itemId: "12345_29",
     },
     {
       color: "cloud-white",
