@@ -18,11 +18,11 @@ app.get('/info/:id', (req, res) => {
 });
 
 app.get('/specs/:id', (req, res) => {
-    res.status(200).json(mockData.specs);
+    res.status(200).json(mockData.items);
 });
 
 app.get('/ratings/:id', (req, res) => {
-    res.status(200).json(mockData.ratings);
+    res.status(200).json(mockData.ratings.ratings);
 });
 
 app.listen(config.PRODUCT_PORT, () => {

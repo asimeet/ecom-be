@@ -68,6 +68,17 @@ router.get('/', (req, res) => {
  *              comment:
  *                  type: string
  *      description: Contains ratings with attributes stars, userEmail and comment
+ *  productImageUrls:
+ *      type: array
+ *      items:
+ *          type: object
+ *          properties:
+ *              original:
+ *                  type: string
+ *                  description: original picture url from cdn
+ *              thumbnail:
+ *                  type: string
+ *                  description: thumbnail picture url from cdn
  */
 
 /**
@@ -154,18 +165,15 @@ router.get('/get-product-description/:id', async (req, res, next) => {
  */
 router.get('/get-product-specs/:id', async (req, res, next) => {
     try {
-        let info, specs, metaData, ratings, serviceCalls;
+        let info, items, metadata, ratings, serviceCalls;
         serviceCalls = [
             callMicroservice('PRODUCT', 'GET', `info/${req.params.id}`),
             callMicroservice('PRODUCT', 'GET', `specs/${req.params.id}`),
             callMicroservice('METADATA', 'GET', `product-specs/${req.params.id}`),
             callMicroservice('PRODUCT', 'GET', `ratings/${req.params.id}`),
         ];
-        [info, specs, metaData, ratings] = await Promise.all(serviceCalls);
-        const colors = lodash.uniq(lodash.map(specs, (item) => lodash.startCase(item.color)));
-        const basePrice = `€ ${specs[0].price}`;
-        const sizes = lodash.uniq(lodash.map(specs, (item) => item.size ));
-        const response = { info, specs, colors, sizes,  basePrice, metaData, ratings};
+        [info, items, metaData, ratings] = await Promise.all(serviceCalls);
+        const response = { ratings, info, metadata, items};
         res.status(200).json(response);
     } catch (err) {
         err = typeof err == 'string' ? Error(err) : err; 
@@ -173,17 +181,46 @@ router.get('/get-product-specs/:id', async (req, res, next) => {
     }
 });
 
-router.get('/get-product-images/:id', async (req, res, next) => {
+/**
+ * @swagger
+ * /get-product-image-urls/{id}:
+ *  get:
+ *      summary: Get Product Image URL from CDN for Slider View
+ *      parameters:
+ *          - in: query
+ *            name: API_KEY
+ *            description: Api key for secured access
+ *            type: string
+ *            required: true
+ *            default: ext-ecom-002
+ *          - in: path
+ *            name: id
+ *            description: Product ID
+ *            type: string
+ *            required: true
+ *            default: 12345
+ *      produces:
+ *          - application/json
+ *      responses:
+ *          200:
+ *              description: Object having different specification details
+ *              schema:
+ *                  type: object
+ *                  properties:
+ *                      productImageUrls:
+ *                          $ref: '#/definitions/productImageUrls'
+ *                      metadata:
+ *                          $ref: '#/definitions/metadata' 
+ */
+router.get('/get-product-image-urls/:id', async (req, res, next) => {
     try {
-        let imageUrls, metaData, serviceCalls;
+        let productImageUrls, metadata, serviceCalls;
         serviceCalls = [
             callMicroservice('UGC', 'GET', `product-images/${req.params.id}`),
             callMicroservice('METADATA', 'GET', `product-images/${req.params.id}`)
         ];
-        [imageUrls, metaData] = await Promise.all(serviceCalls);
-        const results = [... imageUrls];
-        results.forEach( item => delete item.productId);
-        res.status(200).json({imageUrls: results, metaData});
+        [productImageUrls, procuctImageUrl] = await Promise.all(serviceCalls);
+        res.status(200).json({productImageUrls, metadata});
     } catch (err) {
         err = typeof err == 'string' ? Error(err) : err; 
         next(err);
