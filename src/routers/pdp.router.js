@@ -84,7 +84,7 @@ router.get('/', (req, res) => {
 /**
  * @swagger
  * paths:
- *  /get-product-description/{id}:
+ *  /api/get-product-description/{id}:
  *      get:
  *          summary: Gets Product description for a product id and metadata for ui
  *          produces:
@@ -130,7 +130,7 @@ router.get('/get-product-description/:id', async (req, res, next) => {
 
 /**
  * @swagger
- * /get-product-specs/{id}:
+ * /api/get-product-specs/{id}:
  *  get:
  *      summary: Get product availibity, price, colors, ratings and specification related metadata
  *      parameters:
@@ -172,7 +172,7 @@ router.get('/get-product-specs/:id', async (req, res, next) => {
             callMicroservice('METADATA', 'GET', `product-specs/${req.params.id}`),
             callMicroservice('PRODUCT', 'GET', `ratings/${req.params.id}`),
         ];
-        [info, items, metaData, ratings] = await Promise.all(serviceCalls);
+        [info, items, metadata, ratings] = await Promise.all(serviceCalls);
         const response = { ratings, info, metadata, items};
         res.status(200).json(response);
     } catch (err) {
@@ -183,7 +183,7 @@ router.get('/get-product-specs/:id', async (req, res, next) => {
 
 /**
  * @swagger
- * /get-product-image-urls/{id}:
+ * /api/get-product-image-urls/{id}:
  *  get:
  *      summary: Get Product Image URL from CDN for Slider View
  *      parameters:
@@ -219,7 +219,7 @@ router.get('/get-product-image-urls/:id', async (req, res, next) => {
             callMicroservice('UGC', 'GET', `product-images/${req.params.id}`),
             callMicroservice('METADATA', 'GET', `product-images/${req.params.id}`)
         ];
-        [productImageUrls, procuctImageUrl] = await Promise.all(serviceCalls);
+        [productImageUrls, metadata] = await Promise.all(serviceCalls);
         res.status(200).json({productImageUrls, metadata});
     } catch (err) {
         err = typeof err == 'string' ? Error(err) : err; 
