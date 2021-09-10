@@ -83,6 +83,8 @@ The following npm libraries have been used in the application:
 
 * [express](https://www.npmjs.com/package/express)
   - Used for rest api and microservice implementation
+* [pm2](https://www.npmjs.com/package/pm2)
+  - Used for microservice deployment and instance management
 * [axios](https://www.npmjs.com/package/axios)
   - Used for making http requests to product-description-page microservice.
 * [lodash](https://www.npmjs.com/package/lodash)
@@ -131,9 +133,7 @@ This is an example of how to list things you need to use the software and how to
    ```sh
         npm run start-all-dev
    ```
-
    or
-
    ```sh
         pm2 start pm2.config.js
     ```
