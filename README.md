@@ -59,7 +59,8 @@ The implemention demostrates the following features:
     * ```product.service.js``` - Product Microservice
     * ```ugc.service.js``` - User Generated Content MicroService
     * ```metadata.service.js``` - Metadata Microservice
-    *
+
+    And they reside in `services` folder of the repository
 
 * These microservices are implemented in <b>Agrregator Pattern</b> and the Product Description Page Microservice behaves as the aggregator.
 
