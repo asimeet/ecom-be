@@ -48,7 +48,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a backend implemented with node.js and express to build microservices.
+This is a backend implemented with node.js and express to build microservices. This serves for a demo ecommerce website.
 
 Since this is a backend of a demo application. Database is not used instead data is rendered through mock data sets hard coded in the repository.
 
