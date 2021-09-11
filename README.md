@@ -77,7 +77,8 @@ The implemention demostrates the following features:
 
 * The API documentation and testing is implemented with <b>Swagger</b> and runs at path ```/api-docs```. The API docummnetation is present only for Product Description Page Microservice as it is the only exposed microservices out of all.
 
-
+|![](https://gitlab.com/asimeetp/ecom-fe/-/raw/main/ecom-api.gif)|
+|----------------------------------------------------------------|
 
 
 ### Built With
