@@ -73,7 +73,7 @@ The implemention demostrates the following features:
 
 * PIPELINE: The deployment is administered through <b>Gitlab Runner</b> pipeline and the configurations are maintained in ```.gitlab-ci-stopped.yml```. The postfix ```-stopped``` should be removed to activate the pipeline.The deployment has 3 stages ```test``` , ```build```, ```deploy```.
 
-* DEPLOYMENT: AWS EC2 instances is chosen as the deployment server for this demo application
+* DEPLOYMENT: AWS EC2 instance is chosen as the deployment server for this demo application
 
 * The API documentation and testing is implemented with <b>Swagger</b> and runs at path ```/api-docs```. The API docummnetation is present only for Product Description Page Microservice as it is the only exposed microservices out of all.
 
