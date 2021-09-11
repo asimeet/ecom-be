@@ -7,7 +7,7 @@ module.exports = {
     category: "shoes",
     tags: ["volleyball", "badminton", "handball"],
     regions: ["eu"],
-    description: `All the support you need to up your indoor game.These adidas Court Team Bounce shoes
+    description: `All the support you need to up your indoor game.These Court Team Bounce shoes
         keep you cofortable in dast-moving sports likve volleyball, handball and badminton. Their lightweight
         mesh upper adds mobility without sacrificing stability. The full-length Bounce midsole cushions every landing.`,
     recyleInfo:
@@ -43,7 +43,7 @@ module.exports = {
     },
     {
       color: "core-black",
-      stock: 15,
+      stock: 0,
       size: 4.5,
       price: 80,
       currency: "eur",
@@ -383,6 +383,31 @@ module.exports = {
         stars: 5,
         userEmail: "kk2@kk.com",
         comment: "awesome",
+      },
+      {
+        stars: 5,
+        userEmail: "kk3@kk.com",
+        comment: "awesome2",
+      },
+      {
+        stars: 5,
+        userEmail: "kk4@kk.com",
+        comment: "awesome3",
+      },
+      {
+        stars: 5,
+        userEmail: "kk5@kk.com",
+        comment: "awesome4",
+      },
+      {
+        stars: 4,
+        userEmail: "kk6@kk.com",
+        comment: "awesome5",
+      },
+      {
+        stars: 4,
+        userEmail: "kk7@kk.com",
+        comment: "awesome7",
       },
     ],
   },

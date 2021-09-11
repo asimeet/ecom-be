@@ -19,14 +19,6 @@ app.get('/product-info/:id', (req,res) => {
     res.status(200).json(mockData.productInfo);
 });
 
-app.get('/product-specs/:id', (req,res) => {
-    res.status(200).json(mockData.productSpecs);
-});
-
-app.get('/product-images/:id', (req,res) => {
-    res.status(200).json(mockData.productImages);
-});
-
 app.listen(config.METADATA_PORT, () => {
     console.log(`Metadata service is running at port: ${config.METADATA_PORT}`);
 });

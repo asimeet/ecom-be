@@ -5,7 +5,7 @@
      This is a backend with express microservices that can be independently deployed and scaled.
     <br />
     <br />
-    <a href="">View Demo</a>
+    <a href="">View and test API Documentation</a>
     ·
     <a href="https://gitlab.com/asimeetp/ecom-be/-/issues">Report Bug</a>
     ·
@@ -104,11 +104,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+* [Node.js](https://nodejs.org/en/download/) should be installed in the system in order to run the application.
 
 ### Installation
 

@@ -109,19 +109,52 @@ router.get('/', (req, res) => {
  *                      type: object
  *                      properties:
  *                          info:
- *                              $ref: '#/definitions/info'
- *                          metadata: 
- *                              $ref: '#/definitions/metadata'  
+ *                              $ref: '#/definitions/info' 
  */
 router.get('/get-product-description/:id', async (req, res, next) => {
     try {
-        let info, metaData, serviceCalls;
-        serviceCalls = [
-            callMicroservice('PRODUCT', 'GET', `info/${req.params.id}`),
-            callMicroservice('METADATA', 'GET', `product-info/${req.params.id}`)
-        ];
-        [info,metaData] = await Promise.all(serviceCalls);
-        res.status(200).json({info, metaData});
+        const info = await callMicroservice('PRODUCT', 'GET', `info/${req.params.id}`);
+        res.status(200).json({info});
+    } catch (err) {
+        err = typeof err == 'string' ? Error(err) : err; 
+        next(err);
+    }
+});
+
+/**
+ * @swagger
+ * paths:
+ *  /api/get-product-metadata/{id}:
+ *      get:
+ *          summary: Gets Product description for a product id and metadata for ui
+ *          produces:
+ *              - application/json
+ *          parameters:
+ *              - in: query
+ *                name: API_KEY
+ *                description: public API KEY for acccessing the api
+ *                type: string
+ *                required: true
+ *                default: ext-ecom-002
+ *              - in: path
+ *                name: id
+ *                description: Product ID
+ *                type: string
+ *                required: true
+ *                default: 12345
+ *          responses:
+ *              200:
+ *                  description: Object with info and metadata
+ *                  schema: 
+ *                      type: object
+ *                      properties:
+ *                          metadata: 
+ *                              $ref: '#/definitions/metadata'  
+ */
+ router.get('/get-product-metadata/:id', async (req, res, next) => {
+    try {
+        let metadata = await callMicroservice('METADATA', 'GET', `product-info/${req.params.id}`);
+        res.status(200).json({metadata});
     } catch (err) {
         err = typeof err == 'string' ? Error(err) : err; 
         next(err);
@@ -158,22 +191,19 @@ router.get('/get-product-description/:id', async (req, res, next) => {
  *                          $ref: '#/definitions/ratings'
  *                      info:
  *                          $ref: '#/definitions/info'
- *                      metadata:
- *                          $ref: '#/definitions/metadata'
  *                      items:
  *                          $ref: '#/definitions/items'
  */
 router.get('/get-product-specs/:id', async (req, res, next) => {
     try {
-        let info, items, metadata, ratings, serviceCalls;
+        let info, items, ratings, serviceCalls;
         serviceCalls = [
             callMicroservice('PRODUCT', 'GET', `info/${req.params.id}`),
             callMicroservice('PRODUCT', 'GET', `specs/${req.params.id}`),
-            callMicroservice('METADATA', 'GET', `product-specs/${req.params.id}`),
             callMicroservice('PRODUCT', 'GET', `ratings/${req.params.id}`),
         ];
-        [info, items, metadata, ratings] = await Promise.all(serviceCalls);
-        const response = { ratings, info, metadata, items};
+        [info, items, ratings] = await Promise.all(serviceCalls);
+        const response = { ratings, info, items};
         res.status(200).json(response);
     } catch (err) {
         err = typeof err == 'string' ? Error(err) : err; 
@@ -209,18 +239,11 @@ router.get('/get-product-specs/:id', async (req, res, next) => {
  *                  properties:
  *                      productImageUrls:
  *                          $ref: '#/definitions/productImageUrls'
- *                      metadata:
- *                          $ref: '#/definitions/metadata' 
  */
 router.get('/get-product-image-urls/:id', async (req, res, next) => {
     try {
-        let productImageUrls, metadata, serviceCalls;
-        serviceCalls = [
-            callMicroservice('UGC', 'GET', `product-images/${req.params.id}`),
-            callMicroservice('METADATA', 'GET', `product-images/${req.params.id}`)
-        ];
-        [productImageUrls, metadata] = await Promise.all(serviceCalls);
-        res.status(200).json({productImageUrls, metadata});
+        const productImageUrls = await callMicroservice('UGC', 'GET', `product-images/${req.params.id}`);
+        res.status(200).json({productImageUrls});
     } catch (err) {
         err = typeof err == 'string' ? Error(err) : err; 
         next(err);
