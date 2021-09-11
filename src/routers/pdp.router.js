@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { callMicroservice } = require('../lib/common');
+const { callMicroservice } = require('../lib/commons');
 const lodash = require('lodash');
 
 router.get('/', (req, res) => {

@@ -1,6 +1,6 @@
 const express = require('express');
 const config = require('../../config');
-const sharedMiddlewares = require('../lib/shared-middlewares');
+const sharedMiddlewares = require('../lib/commons').middlewares;
 const mockData = require('../mock-data/ugc').imageUrls;
 const app = express();
 
