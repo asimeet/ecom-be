@@ -1,5 +1,5 @@
 module.exports = {
-    productInfo: {
+    productMeta: {
         productId: '12345',
         title: 'Ecommerce.com Indoor Volley Ball Shoes', 
         ogTitle: 'Ecommerce.com Indoor Volley Ball Shoes',

@@ -199,7 +199,7 @@ router.get('/get-product-specs/:id', async (req, res, next) => {
         let info, items, ratings, serviceCalls;
         serviceCalls = [
             callMicroservice('PRODUCT', 'GET', `info/${req.params.id}`),
-            callMicroservice('PRODUCT', 'GET', `specs/${req.params.id}`),
+            callMicroservice('PRODUCT', 'GET', `items/${req.params.id}`),
             callMicroservice('PRODUCT', 'GET', `ratings/${req.params.id}`),
         ];
         [info, items, ratings] = await Promise.all(serviceCalls);
