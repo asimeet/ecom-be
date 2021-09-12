@@ -1,17 +1,17 @@
-<p align="center">
+<div align="center">
   <h3 align="center">The Ecommerce App - Backend</h3>
 
-  <p align="center">
+  <div align="center">
      This is a backend with express microservices that can be independently deployed and scaled.
     <br />
     <br />
-    <a href="">View and test API Documentation</a>
+    <a href=""><b>Open API Documentation</b></a>
     ·
     <a href="https://gitlab.com/asimeetp/ecom-be/-/issues">Report Bug</a>
     ·
     <a href="https://gitlab.com/asimeetp/ecom-be/-/issues">Request Feature</a>
-  </p>
-</p>
+  </div>
+</div>
 
 
 
