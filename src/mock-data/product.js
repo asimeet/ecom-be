@@ -8,7 +8,7 @@ module.exports = {
     tags: ["volleyball", "badminton", "handball"],
     regions: ["eu"],
     description: `All the support you need to up your indoor game.These Court Team Bounce shoes
-        keep you comfortable in fast-moving sports likve volleyball, handball and badminton. Their lightweight
+        keep you comfortable in fast-moving sports like volleyball, handball and badminton. Their lightweight
         mesh upper adds mobility without sacrificing stability. The full-length Bounce midsole cushions every landing.`,
     recyleInfo:
       "This product is made with Primegreen, a series of high-performance recycled materials",
