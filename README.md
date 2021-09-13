@@ -5,7 +5,7 @@
      This is a backend with express microservices that can be independently deployed and scaled.
     <br />
     <br />
-    <a href=""><b>Open API Documentation</b></a>
+    <a href="ec2-18-197-141-197.eu-central-1.compute.amazonaws.com/api-docs"><b>Open API Documentation</b></a>
     ·
     <a href="https://gitlab.com/asimeetp/ecom-be/-/issues">Report Bug</a>
     ·
